@@ -60,8 +60,8 @@ namespace RemoveCows
                 {
                     try
                     {
-                        SkylinesOverwatch.Settings.Instance.Disabled.AnimalMonitor  = false;
-                        SkylinesOverwatch.Settings.Instance.Disabled.Livestocks     = false;
+                        SkylinesOverwatch.Settings.Instance.Enable.AnimalMonitor  = true;
+                        SkylinesOverwatch.Settings.Instance.Enable.Livestocks     = true;
 
                         _data = SkylinesOverwatch.Data.Instance;
                     }
