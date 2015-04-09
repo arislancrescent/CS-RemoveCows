@@ -16,10 +16,13 @@ namespace RemoveCows
     {
         private Helper()
         {
+            GameLoaded = false;
         }
 
         private static readonly Helper _Instance = new Helper();
         public static Helper Instance { get { return _Instance; } }
+
+        internal bool GameLoaded;
 
         public void Log(string message)
         {
