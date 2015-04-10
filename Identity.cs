@@ -11,7 +11,7 @@ namespace RemoveCows
 
         public string Description
         {
-            get { return "Nonpermanently removes all cows. Disable to get the cows back. Requires [ARIS] Skylines Overwatch."; }
+            get { return "Nonpermanently removes all cows. Disable to get the cows back."; }
         }
     }
 }
