@@ -21,29 +21,22 @@ namespace RemoveCows
 
         protected bool IsOverwatched()
         {
-            ulong skylinesOverwatchID;
-
             #if DEBUG
 
             return true;
 
-            #elif PTR
-
-            skylinesOverwatchID = 422560684;
-
             #else
-
-            skylinesOverwatchID = 421028969;
-
-            #endif
 
             foreach (var plugin in PluginManager.instance.GetPluginsInfo())
             {
-                if (plugin.publishedFileID.AsUInt64 == skylinesOverwatchID)
+                if (plugin.publishedFileID.AsUInt64 == 421028969)
                     return true;
             }
 
-            return false;        }
+            return false;
+
+            #endif
+        }
 
         public override void OnCreated(IThreading threading)
         {
@@ -81,7 +74,7 @@ namespace RemoveCows
                 {
                     if (!IsOverwatched())
                     {
-                        _helper.Log(_settings.Flair + " Skylines Overwatch not found. Terminating...");
+                        _helper.Log("Skylines Overwatch not found. Terminating...");
                         _terminated = true;
 
                         return;
@@ -89,6 +82,8 @@ namespace RemoveCows
 
                     SkylinesOverwatch.Settings.Instance.Enable.AnimalMonitor  = true;
                     SkylinesOverwatch.Settings.Instance.Enable.Livestocks     = true;
+
+                    SkylinesOverwatch.Settings.Instance.Debug.AnimalMonitor   = true;
 
                     _initialized = true;
 
