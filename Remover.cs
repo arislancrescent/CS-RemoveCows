@@ -87,18 +87,24 @@ namespace RemoveCows
 
                     _helper.Log("Initialized");
                 }
-                else if (SkylinesOverwatch.Data.Instance.Cows.Length > 0)
+                else
                 {
                     CitizenManager instance = Singleton<CitizenManager>.instance;
 
-                    foreach (ushort i in SkylinesOverwatch.Data.Instance.Cows)
+                    ushort[] cows = SkylinesOverwatch.Data.Instance.Cows;
+
+                    foreach (ushort i in cows)
                     {
                         CitizenInstance cow = instance.m_instances.m_buffer[(int)i];
 
-                        if ((cow.m_flags & CitizenInstance.Flags.Created) == CitizenInstance.Flags.None)
-                            continue;
+                        if (cow.Info != null)
+                        {
+                            cow.Info.m_maxRenderDistance = float.NegativeInfinity;
 
-                        instance.ReleaseCitizenInstance(i);
+                            ((LivestockAI)cow.Info.m_citizenAI).m_randomEffect = null;
+                        }
+
+                        SkylinesOverwatch.Helper.Instance.RequestAnimalRemoval(i);
                     }
                 }
             }
