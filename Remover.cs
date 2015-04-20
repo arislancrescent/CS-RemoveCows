@@ -80,7 +80,7 @@ namespace RemoveCows
                         return;
                     }
 
-                    SkylinesOverwatch.Settings.Instance.Enable.AnimalMonitor  = true;
+                    SkylinesOverwatch.Settings.Instance.Enable.AnimalMonitor = true;
 
                     _initialized = true;
 
